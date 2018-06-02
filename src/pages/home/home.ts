@@ -12,7 +12,9 @@ import { Http, Headers ,HttpModule } from "@angular/http";
 })
 export class HomePage { 
   values =  [];
-
+  text;
+  modifyText;
+  modifyvalue:boolean = false;
   constructor(public navCtrl: NavController, private http: Http ) {
     this.getData()
   }
@@ -26,10 +28,11 @@ export class HomePage {
 
   }
   modify(item){
-
+    this.modifyvalue = true;
+    console.log(item);
   }
   delete(item){
-    
+    console.log(item)
   }
 
 }
