@@ -56,7 +56,7 @@ app.post('/add',jsonParser,function(req , res){
         }
     })
 })
-app.post('/delete',jsonParser,function(req,res){
+app.delete('/delete',jsonParser,function(req,res){
     console.log("delete",req.body);
     val = req.body;
     db.query(`DELETE FROM valueTable WHERE id = ${val.id}`,function(error,results,fields){
