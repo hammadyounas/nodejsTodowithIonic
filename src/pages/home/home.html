@@ -8,7 +8,7 @@
   <!-- <p *ngFor="let item of items | async">
     {{ item.name }}
   </p> -->
-  <ion-card style="border-radius: 5px; margin: 14px 0px 0px 12px;">
+  <ion-card *ngIf="!modifyvalue" style="border-radius: 5px; margin: 14px 0px 0px 12px;">
     <ion-item>
       <ion-label floating>text </ion-label>
       <ion-input type="text" [(ngModel)]="text"></ion-input>
@@ -18,23 +18,33 @@
     <!-- <button ion-button style=" width: 101px; left: 202px;" *ngIf="modifyvalue" (click)="update()" color="primary" block>Update</button> -->
 
   </ion-card>
+  <ion-card *ngIf="modifyvalue" style="border-radius: 5px; margin: 14px 0px 0px 12px;">
+    <ion-item>
+      <ion-label floating>text </ion-label>
+      <ion-input type="text" [(ngModel)]="modifyText.value"></ion-input>
+    </ion-item>
+    <div style="display: inline-flex;">
+    <button ion-button style=" width: 101px; left: 20px;" (click)="cancel()" color="primary" block>cancel</button>
+    <button ion-button style=" width: 101px; left: 82px;" (click)="update()" color="primary" block>update</button>
+    </div>
+    <!-- <button ion-button style=" width: 101px; left: 202px;" *ngIf="modifyvalue" (click)="update()" color="primary" block>Update</button> -->
+
+  </ion-card>
   <br />
   <ion-card *ngFor="let item of values ">
-    <p class="items" *ngIf="!modifyvalue">{{item.value}}</p>
-    <ion-item *ngIf="modifyvalue">
+    <p class="items" >{{item.value}}</p>
+    <!-- <ion-item *ngIf="modifyvalue">
       <ion-label floating>{{item.value}} </ion-label>
       <ion-input type="text" [(ngModel)]="modifyText"></ion-input>
-    </ion-item>
+    </ion-item> -->
     <!-- <P style="padding-top: 9px;padding-left: 20px;font-size: medium;">{{item.value}}</P> -->
 
     <ion-row>
-      <ion-col col-3 >
-        <button ion-button style=" width: 101px; " *ngIf="!modifyvalue" (click)="modify(item)" color="primary" block>Modify</button>
+      <ion-col col-6 >
+        <button ion-button style=" width: 101px; "  (click)="modify(item)" color="primary" block>Modify</button>
+        <!-- <button ion-button style=" width: 101px; " *ngIf="modifyvalue" (click)="update(item)" color="primary" block>update</button> -->
       </ion-col>
-      <ion-col col-3>
-        <button ion-button style=" width: 101px;" *ngIf="modifyvalue" (click)="update(item)" color="primary" block>update</button>
-      </ion-col>
-      <ion-col col-3>
+      <ion-col col-6>
         <button ion-button style=" width: 101px;" (click)="delete(item)" color="primary" block>Delete</button>
       </ion-col>
     </ion-row>

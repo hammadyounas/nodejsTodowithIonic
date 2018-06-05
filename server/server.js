@@ -79,7 +79,7 @@ app.delete('/delete',jsonParser,function(req,res){
 app.post('/edit',jsonParser,function(req,res){
     console.log("edit",req.body);
     val = req.body;
-    db.query(`UPDATE valueTable SET value = '${val.edit}' WHERE id = '${val.id}'`,function(error,results,fields){
+    db.query(`UPDATE valueTable SET value = '${val.value}' WHERE id = '${val.id}'`,function(error,results,fields){
         if(error){
             console.log("error",error)
         }else{
